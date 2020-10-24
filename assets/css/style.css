@@ -1,0 +1,44 @@
+nav{ 
+    background-color: black ;
+    position: relative;
+float:right;
+padding: 10px;}
+
+/* .btn modal-trigger{
+    width: 20%;
+} */
+#searchTerm {
+    width: 20%;
+    margin: 10px;
+
+    
+}
+
+col{
+    font-size: 150%;
+    padding: 20%;
+    word-spacing: 40%;
+}
+
+section{
+    padding-left: 300px;
+}
+#music img{ 
+    float:right;
+    padding-block-end: auto;
+    }
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+main {
+        flex: 1 0 auto;
+}
+.page-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+} 
