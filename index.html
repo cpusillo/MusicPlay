@@ -25,10 +25,6 @@
     </div>
   </nav>
 
-
-
-
-
   <!-- LEFT SIDEBAR	 -->
   <ul id="sidenav-1" class="sidenav sidenav-fixed">
     <!-- <p>Mission Statement </p>
@@ -44,37 +40,20 @@
   </ul>
 
 
-  <!-- RIGHT SIDEBAR	 -->
-  <!-- <ul id="sidenav-2" class="sidenav">    
-	<li><a class="subheader">Subheader</a></li>
-	<li><a href="https://github.com/dogfalo/materialize/" target="_blank">Github</a></li>
-	<li><a href="https://twitter.com/MaterializeCSS" target="_blank">Twitter</a></li>
-	<li><a href="http://next.materializecss.com/getting-started.html" target="_blank">Docs</a></li>
-</ul> -->
-
-  <!-- <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo left"><img src="./assets/musicplay-white-transparent.png" /></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            </ul>
-
-        </div>
-    </nav> -->
   <br>
+
+
+  <section class="search-results">
+    <!-- Dynamic UL with LI elements containing the search results -->
+
+</section>
+
+
   <section class="main">
-    <!-- <div class="row">
-        <div id="mission" class="col s3">
-            <a>Mission Statement</a>
-            <img src="./assets/MP.png">
-            <br>
-<P>here it comes the website would cater the need for your music approach</P>
 
-        </div> -->
+    </div>
     <div id="searchTerm" class="col s7">
-      <input type="text" class="searchTerm" placeholder="Song Name ">
-      <input type="text" class="searchTerm" placeholder="Artist Name">
-      <button data-target="modal1" class="btn modal-trigger">Search</button></input>
-
+      <button data-target="modal1" class="btn modal-trigger">Let's go!</button></input>
       <table>
         <thead>
           <tr>
@@ -127,13 +106,15 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
-      <input type="text" class="searchTerm" placeholder="Song Name ">
-      <input type="text" class="searchTerm" placeholder="Artist Name">
-      <button data-target="modal1" class="btn modal-trigger">Search</button></input>
+      <input type="text" id="inputTrack" placeholder="Song Name ">
+      <input type="text" id="inputArtist" placeholder="Artist Name">
+      <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitBtn">Search</button></input>
     </div>
+  </div>
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="./assets/js/"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 
