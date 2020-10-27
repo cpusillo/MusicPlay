@@ -10,10 +10,12 @@ padding: 10px;}
 #searchTerm {
     width: 20%;
     margin: 10px;
-
-    
+    float: left;    
 }
-
+h1{
+float: left;
+margin-left: 400px;
+}
 col{
     font-size: 150%;
     padding: 20%;
@@ -35,10 +37,13 @@ section{
 main {
         flex: 1 0 auto;
 }
-.page-footer {
-    position: absolute;
+#footer{
+
+position: relative;
     bottom: 0;
-    width: 100%;
     background-color: black;
     color: white;
+margin: 15%;
+padding: 1%;
+padding: 10px;
 } 
