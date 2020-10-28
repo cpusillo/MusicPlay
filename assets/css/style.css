@@ -1,8 +1,10 @@
 nav{ 
     background-color: black ;
     position: relative;
-float:right;
-padding: 10px;}
+float:left;
+margin-left: 300px;
+padding: 20;
+}
 
 /* .btn modal-trigger{
     width: 20%;
@@ -14,7 +16,8 @@ padding: 10px;}
 }
 h1{
 float: left;
-margin-left: 400px;
+margin-left: 300px;
+line-height: 0%;
 }
 col{
     font-size: 150%;
@@ -29,21 +32,37 @@ section{
     float:right;
     padding-block-end: auto;
     }
-    body {
+
+body {
         display: flex;
         min-height: 100vh;
         flex-direction: column;
       }
+      
 main {
         flex: 1 0 auto;
 }
 #footer{
 
-position: relative;
-    bottom: 0;
-    background-color: black;
-    color: white;
-margin: 15%;
-padding: 1%;
+position: absolute;
+bottom: 0;
+width: 100%;
+background-color: black;
+color: rgb(247, 217, 48);
 padding: 10px;
+margin-left: 20%;
 } 
+
+*{
+    font-family: 'Staatliches', cursive;
+
+}
+ #mp {
+     padding-top: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    max-width: 100px;
+  }
+
