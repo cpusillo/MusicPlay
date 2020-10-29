@@ -68,7 +68,7 @@ $(document).ready(function () {
             // Build our search string.
             var search = "";
             search += artist + " " + song;
-            var apiKey = "AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0"
+            var apiKey = "AIzaSyAB_alANYNG1k_KvSDF9zRgl22yJbSgH7k" //AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0 && AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0 
             var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + apiKey + "&type=video&q=" + search;
 
             // Create our AJAX call, using the jQuery .ajax() method.
@@ -158,7 +158,7 @@ $(document).ready(function () {
             var li = $("<li>");
             li.addClass("no-searches");
             li.text("No searches here yet!");
-            li.appendTo($("#recentSearches"));
+            li.appendTo($(".recentSearches"));
         }
 
         else {
@@ -167,7 +167,7 @@ $(document).ready(function () {
             for (var i = 0; i < allSearched.length; i++) {
                 var li = $("<li>");
                 li.html(allSearched[i].artist + ": " + allSearched[i].song);
-                li.appendTo($("#recentSearches"));
+                li.appendTo($(".recentSearches"));
             };
         };
 
