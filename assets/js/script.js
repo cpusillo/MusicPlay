@@ -164,7 +164,7 @@ $(document).ready(function () {
         else {
             $(".no-searches").remove();
 
-            for (var i = 0; i < allSearched.length; i++) {
+            for (var i = 0; i < 5; i++) {
                 var li = $("<li>");
                 li.html(allSearched[i].artist + ": " + allSearched[i].song);
                 li.appendTo($("#recentSearches"));
