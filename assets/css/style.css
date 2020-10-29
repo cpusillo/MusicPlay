@@ -40,7 +40,8 @@ box-sizing: 51%;}
 body {
         display: flex;
         min-height: 100vh;
-        flex-direction: column;
+        flex-direction: column ;
+        background-color: lemonchiffon ;
       }
 
 main {
@@ -49,12 +50,13 @@ padding-left: 350px;
 padding-top: 60px;
 }
 #footer{
-margin-inline-start: 15.5%;
+/* margin-inline-start: %; */
     position: relative;
 background-color: black;
 color: rgb(247, 217, 48);
 padding: 10px;
 object-fit: cover ;
+text-align: right;
 } 
 h6{
     text-align: center;
@@ -74,5 +76,13 @@ p{
     margin-right: auto;
     height: auto;
     max-width: 100px;
+    
   }
+  #sidenav-1{
+      background-color: bisque;
+      border-style: groove  ;
+padding-top: 5%;
+border-radius: 120px; 
+
+}
 
