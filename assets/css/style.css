@@ -2,22 +2,26 @@ nav{
     background-color: black ;
     position: absolute;
 float:left;
-margin-left: 300px;
-padding: 20;
+/* padding: 20; */
 }
 
-.btn modal-trigger{
-    width: 20%;
-}
+/* .btn modal-trigger{
+
+height: 200%;} */
 #searchTerm {
     width: 20%;
-    margin: 10px;
+    margin: 50px;
+    padding-top: 2%;
     float: left;    
+    /* font-family: 'Damion', cursive; */
+
 }
-h1{
+h2{
 float: left;
 margin-left: 300px;
 line-height: 0%;
+font-family: 'Damion', cursive;
+
 }
 col{
     font-size: 150%;
@@ -30,14 +34,13 @@ section{
 box-sizing: 51%;}
 #music img{ 
     float: right;
-    width: 100%;
+    width: auto;
 }
 
 body {
         display: flex;
         min-height: 100vh;
         flex-direction: column;
-        
       }
 
 main {
@@ -61,6 +64,7 @@ p{
 }
 
 *{
+    
     font-family: 'Staatliches', cursive;
 }
  #mp {
