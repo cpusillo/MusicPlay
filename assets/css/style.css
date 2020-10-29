@@ -1,14 +1,14 @@
 nav{ 
     background-color: black ;
-    position: relative;
+    position: absolute;
 float:left;
 margin-left: 300px;
 padding: 20;
 }
 
-/* .btn modal-trigger{
+.btn modal-trigger{
     width: 20%;
-} */
+}
 #searchTerm {
     width: 20%;
     margin: 10px;
@@ -26,36 +26,42 @@ col{
 }
 
 section{
-    padding-left: 300px;
-}
+    padding-left: 327px;
+box-sizing: 51%;}
 #music img{ 
-    float:right;
-    padding-block-end: auto;
-    }
+    float: right;
+    width: 100%;
+}
 
 body {
         display: flex;
         min-height: 100vh;
         flex-direction: column;
+        
       }
-      
+
 main {
-        flex: 1 0 auto;
+        flex: 10 auto;
+padding-left: 350px;
+padding-top: 60px;
 }
 #footer{
-
-position: absolute;
-bottom: 0;
-width: 100%;
+margin-inline-start: 15.5%;
+    position: relative;
 background-color: black;
 color: rgb(247, 217, 48);
 padding: 10px;
-margin-left: 20%;
+object-fit: cover ;
 } 
+h6{
+    text-align: center;
+}
+p{
+    text-align: right;
+}
 
 *{
     font-family: 'Staatliches', cursive;
-
 }
  #mp {
      padding-top: 10%;
