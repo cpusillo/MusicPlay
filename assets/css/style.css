@@ -11,11 +11,13 @@ height: 200%;} */
 #searchTerm {
     width: 20%;
     margin: 50px;
-    padding-top: 2%;
+    padding-top: 2%; 
     float: left;    
     /* font-family: 'Damion', cursive; */
 
 }
+
+
 h2{
 float: left;
 margin-left: 300px;
