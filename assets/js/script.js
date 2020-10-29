@@ -2,6 +2,48 @@ $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
 
+    /* TIM */
+
+    var apiKeyYT = "AIzaSyDQGyvDpfhwdlC5SvRAyhEQxpZtnNAiyY0";
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelID=UC2pmfLm7iq6Ov1UwYrWYkZA&maxResults=6&regionCode=US&type=video&videoCategoryId=10&key=" + apiKeyYT;
+
+
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+
+
+
+        var trendItems = (response.items);
+        var trendlink = "https://youtu.be/";
+
+        for (var i = 0; i < trendItems.length; i++) {
+
+
+            trendlink += (response.items[i].id.videoId);
+
+            // console.log(trendlink)
+
+            var trendThumb = (response.items[i].snippet.thumbnails.medium.url)
+            var trendImage = $("<img>").attr("src", trendThumb)
+            $("#trendRow").append(trendImage)
+
+            var trendTitle = (response.items[i].snippet.title)
+            var trendtitleEl = $("<p>").text(trendTitle)
+            $("#trendRow").append(trendtitleEl)
+
+
+        }
+
+
+
+    });
+
+
+
     /* CORRINE */
 
     //create an array and store in a variable to hold the user input.
