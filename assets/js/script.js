@@ -1,144 +1,158 @@
-$(document).ready(function(){
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal').modal();
+$(document).ready(function () {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
 
-/* CORRINE */
+    //create an array and store in a variable to hold the user input.
+    var store = [];
+    setRecentSearches()
 
-  // Determine what our submit button does.
-  $("#submitBtn").on("click", function (e) {
-      
-      // Grab and trim our user input boxes.
-      var artist = $("#inputArtist").val().trim();
-      var song = $("#inputTrack").val().trim();
+    /* CORRINE */
+    // Determine what our submit button does.
+    $("#submitBtn").on("click", function (e) {
 
+        // Grab and trim our user input boxes.
+        var artist = $("#inputArtist").val().trim();
+        var song = $("#inputTrack").val().trim();
 
-      // Pass input to the getMusic function, running MusixMatch API.
-      getMusic(artist, song);
+        // Pass input to the getMusic function, running MusixMatch API.
+        getMusic(artist, song);
 
- /*
-      The getMusic() function, accepts two args, artist and song, parses
-      the input and queries the MusixMatch API for matching song lyrics.
-  */
-  function getMusic(artist, song) {
+        //create a variable to store the inputs the user makes to the artist and song parameters
+        var searched = {
+            artist,
+            song
+        };
 
-      // Get the lyrics
+        store.push(searched);
+        localStorage.setItem("search", JSON.stringify(store));
 
-      // Format the string to work with the API method call requirements.
-      songScrubbed = song.replace(/ /g, '%20');
-      artistScrubbed = artist.replace(/ /g, '%20');
+        /*
+                     The getMusic() function, accepts two args, artist and song, parses
+                     the input and queries the MusixMatch API for matching song lyrics.
+                 */
+        function getMusic(artist, song) {
 
-      // Build the queryURL.
-      var queryURL1 = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=" + songScrubbed + "&q_artist=" + artistScrubbed + "&apikey=09147d8948de232b91be633e58a1abbd&callback=?";
+            // Get the lyrics
 
-      // Make the AJAX call, using getJSON as indicated by API docs.
-      $.getJSON(queryURL1, function (data) {
-          console.log(data);
-          console.log("matcher.lyrics.get");
+            // Format the string to work with the API method call requirements.
+            songScrubbed = song.replace(/ /g, '%20');
+            artistScrubbed = artist.replace(/ /g, '%20');
 
-          // Get the status code.
-          var statusCode = data.message.header.status_code;
-          var lyrics = data.message.body.lyrics.lyrics_body;
+            // Build the queryURL.
+            var queryURL1 = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=jsonp&callback=callback&q_track=" + songScrubbed + "&q_artist=" + artistScrubbed + "&apikey=09147d8948de232b91be633e58a1abbd&callback=?";
 
-          console.log(lyrics)
+            // Make the AJAX call, using getJSON as indicated by API docs.
+            $.getJSON(queryURL1, function (data) {
+                console.log(data);
+                console.log("matcher.lyrics.get");
 
-          // Pass input to the getVideo function, running Youtube API.
-          getVideo(artist, song, lyrics, statusCode);
+                // Get the status code.
+                var statusCode = data.message.header.status_code;
+                var lyrics = data.message.body.lyrics.lyrics_body;
 
-      }); // getJSON
-  } // getMusic()
+                console.log(lyrics)
 
-  function getVideo(artist, song, lyrics, statusCode) {
+                // Pass input to the getVideo function, running Youtube API.
+                getVideo(artist, song, lyrics, statusCode);
 
-      // Build our search string.
-      var search = "";
-      search += artist + " " + song;
-      var apiKey = "AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0"
-      var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + apiKey + "&type=video&q=" + search;
+            }); // getJSON
+        } // getMusic()
 
-      // Create our AJAX call, using the jQuery .ajax() method.
-      $.ajax({
-          url: queryURL,
-          method: "GET"
-      }).then(function (response) {
-          //console.log("Here is the Youtube API JSON response: ")
-          //console.log(response);
+        function getVideo(artist, song, lyrics, statusCode) {
 
-          //console.log("Here is the response drilled down into the video items: ")
-          //console.log(response.items);
+            // Build our search string.
+            var search = "";
+            search += artist + " " + song;
+            var apiKey = "AIzaSyAB_alANYNG1k_KvSDF9zRgl22yJbSgH7k" //AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0 
+            var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + apiKey + "&type=video&q=" + search;
 
-          // Build the video link.
-          var videoLink = "https://youtu.be/" //Concatenate with video ID for full link.
-          videoLink += response.items[0].id.videoId;
-          //console.log(videoLink);
+            // Create our AJAX call, using the jQuery .ajax() method.
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                //console.log("Here is the Youtube API JSON response: ")
+                //console.log(response);
 
-          // Get the video title
-          var title = response.items[0].snippet.title;
-          console.log(title);
-          var titleEL = $("<a>");
-          titleEL.attr("href", videoLink);
-          titleEL.text(title);
-          searchResults = $(".search-results")
+                //console.log("Here is the response drilled down into the video items: ")
+                //console.log(response.items);
 
-          var row = $("<div>");
-          row.addClass("row");
-          var cols3 = $("<div>"); // For the thumbnail
-          cols3.addClass("col s3") 
-          var cols8 = $("<div>"); // For the lyrics & song title
-          cols8.addClass("col s8");
+                // Build the video link.
+                var videoLink = "https://youtu.be/" //Concatenate with video ID for full link.
+                videoLink += response.items[0].id.videoId;
+                //console.log(videoLink);
 
+                // Get the video title
+                var title = response.items[0].snippet.title;
+                console.log(title);
+                var titleEL = $("<a>");
+                titleEL.attr("href", videoLink);
+                titleEL.text(title);
+                searchResults = $(".search-results")
 
-          
-
-          // If status code is 404 (not found), tell the user to try again.
-          if (statusCode === 404) {
-              cols8.text("No lyrics found, try again!")
-          } else if (statusCode !== 400 && lyrics !== "") {
-              
-              cols8.text(lyrics);
-
-          } else if (statusCode !== 400 && lyrics === "") {
-              cols8.text("Unfortunately, we are unable to show these lyrics due to copyright laws");
-          }
-
-
-          // Get the thumbnail picture
-          var thumbnailURL = response.items[0].snippet.thumbnails.medium.url;
-          var thumbnailEL = $("<img>");
-          thumbnailEL.addClass("youtube-thumbnail");
-          thumbnailEL.attr("src", thumbnailURL);
-
-          cols3.append(thumbnailEL)
-          cols3.append($("<br/>"));
-          cols3.append(titleEL);
-
-          row.append(cols3);
-          row.append(cols8);
-          searchResults.append(row);
+                var row = $("<div>");
+                row.addClass("row");
+                var cols3 = $("<div>"); // For the thumbnail
+                cols3.addClass("col s3")
+                var cols8 = $("<div>"); // For the lyrics & song title
+                cols8.addClass("col s8");
 
 
 
+                // If status code is 404 (not found), tell the user to try again.
+                if (statusCode === 404) {
+                    cols8.text("No lyrics found, try again!")
+                } else if (statusCode !== 400 && lyrics !== "") {
 
-      
+                    cols8.text(lyrics);
 
-          
-      }); // .ajax();
+                } else if (statusCode !== 400 && lyrics === "") {
+                    cols8.text("Unfortunately, we are unable to show these lyrics due to copyright laws");
+                }
+
+                // Get the thumbnail picture
+                var thumbnailURL = response.items[0].snippet.thumbnails.medium.url;
+                var thumbnailEL = $("<img>");
+                thumbnailEL.addClass("youtube-thumbnail");
+                thumbnailEL.attr("src", thumbnailURL);
+
+                cols3.append(thumbnailEL)
+                cols3.append($("<br/>"));
+                cols3.append(titleEL);
+
+                row.append(cols3);
+                row.append(cols8);
+                searchResults.append(row);
+
+            }); // .ajax();
+        }; // getVideo();
+    });
+
+    function setRecentSearches() {
+
+        var allSearched = JSON.parse(localStorage.getItem("search"));
+
+        if (allSearched === null) {
+            var li = $("<li>");
+            li.addClass("no-searches");
+            li.text("No searches here yet!");
+            li.appendTo($("#recentSearches"));
+        }
+
+        else {
+            $(".no-searches").remove();
+
+            for (var i = 0; i < allSearched.length; i++) {
+                var li = $("<li>");
+                li.html(allSearched[i].artist + ": " + allSearched[i].song);
+                li.appendTo($("#recentSearches"));
+            };
+        };
+
+
+    }; // KEEP CODE ABOVE HERE
 
 
 
-  } // getVideo();
 
-
-
-  
-
-  });
-
-
-
-}); // KEEP CODE ABOVE HERE
-
-
-
-
-
-
+});

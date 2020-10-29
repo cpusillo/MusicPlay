@@ -8,13 +8,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Damion&display=swap" rel="stylesheet">
+
+
+
 </head>
 
 <body>
   <nav>
-    <div class="nav-wrapper right-align">
+    <div class="nav-wrapper right-align " >
       <div class="row">
-        <div class="col s4">
+        <div class="col s5">
           <a href="#" data-target="sidenav-1" class="left sidenav-trigger hide-on-medium-and-up"><i
               class="material-icons">Mission Statement</i></a>
           <!-- <a href="#" data-target="sidenav-2" class="right sidenav-trigger show-on-medium-and-up"><i class="material-icons">menu</i></a> -->
@@ -29,13 +34,15 @@
   <ul id="sidenav-1" class="sidenav sidenav-fixed">
     <!-- <p>Mission Statement </p>
  -->
-    <img src="./assets/MP.png">
+ <div id="mp">
+    <img  src="./assets/MP.png">
+    </div>
     <br>
 
-    <a>Mission Statement</a>
+    <h6>Mission Statement</h6>
 
     <br>
-    <P>here it comes the website would cater the need for your music approach</P>
+    <p>here it comes the website would cater the need for your music approach</p>
 
   </ul>
 
@@ -49,52 +56,25 @@
 </section>
 
 
-  <section class="main">
+  <main class="main">
 
     </div>
-    <div id="searchTerm" class="col s7">
+    <div id="searchTerm" class="col s10">
       <button data-target="modal1" class="btn modal-trigger">Let's go!</button></input>
-      <table>
-        <thead>
-          <tr>
-            <th>Recent Searches </th>
-
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-          </tr>
-
-          <tr>
-            <td>Jonathan</td>
-          </tr>
-
-        </tbody>
-      </table>
-
+     
     </div>
-    <div id="searchTerm" class="col s2">
-      <a>Trending</a>
+    <div id="searchTerm" class="col s2" >
+      <h2>Trending</h2>
+      </div>
     </div>
     </div>
-  </section>
+  </main>
   <footer class=“page-footer”>
     <div class=“container”>
       <div class=“row”>
-        <div class=“col l6 s12">
+        <div class="col l6 s12">
           <div class=“footer-copyright”>
-            <div class=“container”>
+            <div class=“container” id="footer">
               © 2020 Lindsey Baginski, Corrine Pusillo, Tim Balascak, Britney Borrero, Chiagozie Ihuoma, Heena Rajpal
               <p><a href=“link@example.com”>link to dev page</a></p>
             </div>
@@ -105,7 +85,7 @@
   </footer><!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
+      <h4>Search</h4>
       <input type="text" id="inputTrack" placeholder="Song Name ">
       <input type="text" id="inputArtist" placeholder="Artist Name">
       <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" id="submitBtn">Search</button></input>
