@@ -21,19 +21,22 @@ height: 200%;} */
 h2{
 float: left;
 margin-left: 300px;
-line-height: 0%;
+/* line-height: 0%; */
 font-family: 'Damion', cursive;
 
 }
-col{
+/* col{
     font-size: 150%;
-    padding: 20%;
-    word-spacing: 40%;
-}
+    /* padding: 20%; */
+    /* word-spacing: 40%; */
 
-section{
+/* section{
     padding-left: 327px;
-box-sizing: 51%;}
+box-sizing: 51%;
+} */
+#trendRow{
+    float: right;
+}
 #music img{ 
     float: right;
     width: auto;
