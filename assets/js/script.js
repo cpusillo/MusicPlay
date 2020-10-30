@@ -2,20 +2,18 @@ $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
 
+    //create an array and store in a variable to hold the user input.
+    var store = [];
+    setRecentSearches();
+
     /* TIM */
-
-    var apiKeyYT = "AIzaSyDQGyvDpfhwdlC5SvRAyhEQxpZtnNAiyY0";
+    var apiKeyYT = "AIzaSyDdYbxab_e4wYPLQ1aBj9bDswbk5VH26wI";
     var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelID=UC2pmfLm7iq6Ov1UwYrWYkZA&maxResults=6&regionCode=US&type=video&videoCategoryId=10&key=" + apiKeyYT;
-
-
-
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-
-
 
         var trendItems = (response.items);
         var trendlink = "https://youtu.be/";
@@ -29,6 +27,7 @@ $(document).ready(function () {
 
             var trendThumb = (response.items[i].snippet.thumbnails.medium.url)
             var trendImage = $("<img>").attr("src", trendThumb)
+            trendImage.addClass("responsive-img");
             $("#trendRow").append(trendImage)
 
             var trendTitle = (response.items[i].snippet.title)
@@ -37,18 +36,9 @@ $(document).ready(function () {
 
 
         }
-
-
-
     });
 
-
-
     /* CORRINE */
-
-    //create an array and store in a variable to hold the user input.
-    var store = [];
-
     // Determine what our submit button does.
     $("#submitBtn").on("click", function (e) {
 
@@ -58,7 +48,7 @@ $(document).ready(function () {
 
 
         // Pass input to the getMusic function, running MusixMatch API.
-        getMusic(artist, song);
+       getMusic(artist, song);
 
 
         //create a variable to store the inputs the user makes to the artist and song parameters
@@ -67,16 +57,16 @@ $(document).ready(function () {
             song
         };
 
+        // Push our object in our array of objects, store.
         store.push(searched);
-
+        // Pass our array of objects into local storage.
         localStorage.setItem("search", JSON.stringify(store));
-        setRecentSearches()
 
 
         /*
-                     The getMusic() function, accepts two args, artist and song, parses
-                     the input and queries the MusixMatch API for matching song lyrics.
-                 */
+        The getMusic() function, accepts two args, artist and song, parses
+        the input and queries the MusixMatch API for matching song lyrics.
+         */
         function getMusic(artist, song) {
 
             // Get the lyrics
@@ -100,7 +90,7 @@ $(document).ready(function () {
                 console.log(lyrics)
 
                 // Pass input to the getVideo function, running Youtube API.
-                getVideo(artist, song, lyrics, statusCode);
+               getVideo(artist, song, lyrics, statusCode);
 
             }); // getJSON
         } // getMusic()
@@ -110,7 +100,7 @@ $(document).ready(function () {
             // Build our search string.
             var search = "";
             search += artist + " " + song;
-            var apiKey = "AIzaSyAB_alANYNG1k_KvSDF9zRgl22yJbSgH7k" //AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0 && AIzaSyA7hF4td_eyZElEdkQBfnMuCHF1SfQWIS0 
+            var apiKey = "AIzaSyCou3PEzut2mTwROkqH9_uxZHK1wktkG-E"
             var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + apiKey + "&type=video&q=" + search;
 
             // Create our AJAX call, using the jQuery .ajax() method.
@@ -118,11 +108,6 @@ $(document).ready(function () {
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                //console.log("Here is the Youtube API JSON response: ")
-                //console.log(response);
-
-                //console.log("Here is the response drilled down into the video items: ")
-                //console.log(response.items);
 
                 // Build the video link.
                 var videoLink = "https://youtu.be/" //Concatenate with video ID for full link.
@@ -131,94 +116,76 @@ $(document).ready(function () {
 
                 // Get the video title
                 var title = response.items[0].snippet.title;
-                console.log(title);
+                var li = $("<li>");
+                li.addClass("music-display")
+                searchedContent = $(".searchedContent")
+
+
                 var titleEL = $("<a>");
                 titleEL.attr("href", videoLink);
                 titleEL.text(title);
-                searchResults = $(".search-results")
-
-                var row = $("<div>");
-                row.addClass("row");
-                var cols3 = $("<div>"); // For the thumbnail
-                cols3.addClass("col s3")
-                var cols8 = $("<div>"); // For the lyrics & song title
-                cols8.addClass("col s8");
-
-
-
-
-                // If status code is 404 (not found), tell the user to try again.
-                if (statusCode === 404) {
-                    cols8.text("No lyrics found, try again!")
-                } else if (statusCode !== 400 && lyrics !== "") {
-
-                    cols8.text(lyrics);
-
-                } else if (statusCode !== 400 && lyrics === "") {
-                    cols8.text("Unfortunately, we are unable to show these lyrics due to copyright laws");
-                }
-
+                titleEL.appendTo(li);
+                
 
                 // Get the thumbnail picture
                 var thumbnailURL = response.items[0].snippet.thumbnails.medium.url;
                 var thumbnailEL = $("<img>");
-                thumbnailEL.addClass("youtube-thumbnail");
+                thumbnailEL.addClass("img-responsive youtubeThumb");
                 thumbnailEL.attr("src", thumbnailURL);
 
-                cols3.append(thumbnailEL)
-                cols3.append($("<br/>"));
-                cols3.append(titleEL);
+              
+                var lyricsP = $("<p>");
+                lyricsP.addClass("lyrics")
+                // If status code is 404 (not found), tell the user to try again.
+                if (statusCode === 404) {
+                    lyricsP.text("No lyrics found, try again!")
+                } else if (statusCode !== 400 && lyrics !== "") {
 
-                row.append(cols3);
-                row.append(cols8);
-                searchResults.append(row);
+                    lyricsP.text(lyrics);
 
+                } else if (statusCode !== 400 && lyrics === "") {
+                    lyricsP.text("Unfortunately, we are unable to show these lyrics due to copyright laws");
+                }
 
-
-
-
-
-
+                thumbnailEL.appendTo(li);
+                lyricsP.appendTo(li);
+                li.appendTo(searchedContent);
+                var br = $("<br>");
+                br.appendTo(searchedContent);
+ 
             }); // .ajax();
-
-
-
         }; // getVideo();
-
-
-
-
 
     });
 
-    function setRecentSearches() {
+    /*
+        setRecentSearches() displays the user's previous session's searches
+        on the UI underneath the search results.
+    */
 
-        var allSearched = JSON.parse(localStorage.getItem("search"));
+    /* CHIAGOZIE */
+function setRecentSearches() {
+    // Get our data out of local storage.
+    var allSearched = JSON.parse(localStorage.getItem("search"));
 
-
-        if (allSearched === null) {
+    // If local storage is empty, display a message for the user.
+    if (allSearched === null) {
+        console.log("Nothing in recent")
+        var li = $("<li>");
+        li.addClass("no-searches")
+        li.text("No searches here yet!")
+        li.appendTo($(".recentSearches"));
+    } // If local storage has values, display them to the user.
+    else {
+        store = store.concat(allSearched)
+        $(".no-searches").remove();
+        for (var i = 0; i < allSearched.length; i++) {
             var li = $("<li>");
-            li.addClass("no-searches");
-            li.text("No searches here yet!");
+            li.html(allSearched[i].artist + ": " + allSearched[i].song);
             li.appendTo($(".recentSearches"));
         }
-
-        else {
-            $(".no-searches").remove();
-
-            for (var i = 0; i < allSearched.length; i++) {
-                var li = $("<li>");
-                li.html(allSearched[i].artist + ": " + allSearched[i].song);
-                li.appendTo($(".recentSearches"));
-            };
-        };
+    }
+}
 
 
-
-    }; // KEEP CODE ABOVE HERE
-
-
-
-
-
-});
+}); // End of document

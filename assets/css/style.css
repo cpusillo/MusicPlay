@@ -1,79 +1,57 @@
-nav{ 
-    background-color: black ;
-    position: absolute;
-float:left;
-/* padding: 20; */
-}
-/* .btn modal-trigger{
-height: 200%;} */
-#searchTerm {
-    width: 20%;
-    margin: 50px;
-    padding-top: 2%;
-    float: left;    
-    /* font-family: 'Damion', cursive; */
-}
-h2{
-float: left;
-margin-left: 300px;
-/* line-height: 0%; */
-font-family: 'Damion', cursive;
-}
-/* col{
-    font-size: 150%;
-    /* padding: 20%; */
-    /* word-spacing: 40%; */
-/* section{
-    padding-left: 327px;
-box-sizing: 51%;
-} */
-#trendRow{
-    float: right;
-}
-#music img{ 
-    float: right;
-    width: auto;
+/* GLOBAL */
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 body {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column ;
-        background-color: lemonchiffon ;
-      }
-main {
-        flex: 10 auto;
-padding-left: 350px;
-padding-top: 60px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: lemonchiffon;
 }
-#footer{
-/* margin-inline-start: %; */
-    position: relative;
-background-color: black;
-color: rgb(247, 217, 48);
-padding: 10px;
-object-fit: cover ;
-text-align: right;
-} 
-h6{
-    text-align: center;
-}
-p{
-    text-align: right;
-}
-*{
+h1,h2,h3,h4,h5,h6 {
     font-family: 'Staatliches', cursive;
 }
- #mp {
-     padding-top: 10%;
+a {
+    color: #e53935;
+}
+.material-icons {
+ vertical-align: middle;
+}
+
+/* NAVIGATION */
+nav {
+    background-color: black;
+    margin-bottom: 60px;
+
+}
+/* BUTTONS */
+.main-btn {
+
+}
+/* Trending */
+#trend-title{
+    text-align: center;
+}
+
+/* Search Results */
+.youtubeThumb {
+    margin-right: 10px;
+    float: left;
+}
+.lyrics {
+    font-size: 12px;
+}
+.music-display {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    max-width: 100px;
-  }
-  #sidenav-1{
-      background-color: bisque;
-      border-style: groove  ;
-padding-top: 5%;
-border-radius: 120px; 
+    margin: 10px 0;
+}
+footer {
+    /* margin-inline-start: %; */
+    background-color: black;
+    color: rgb(247, 217, 48);
+    padding: 10px;
+    object-fit: cover;
+    text-align: right;
+    bottom: 0;
+    width: 100%
 }
