@@ -4,9 +4,7 @@ nav{
 float:left;
 /* padding: 20; */
 }
-
 /* .btn modal-trigger{
-
 height: 200%;} */
 #searchTerm {
     width: 20%;
@@ -14,22 +12,17 @@ height: 200%;} */
     padding-top: 2%;
     float: left;    
     /* font-family: 'Damion', cursive; */
-
 }
-
-
 h2{
 float: left;
 margin-left: 300px;
 /* line-height: 0%; */
 font-family: 'Damion', cursive;
-
 }
 /* col{
     font-size: 150%;
     /* padding: 20%; */
     /* word-spacing: 40%; */
-
 /* section{
     padding-left: 327px;
 box-sizing: 51%;
@@ -41,14 +34,12 @@ box-sizing: 51%;
     float: right;
     width: auto;
 }
-
 body {
         display: flex;
         min-height: 100vh;
         flex-direction: column ;
         background-color: lemonchiffon ;
       }
-
 main {
         flex: 10 auto;
 padding-left: 350px;
@@ -69,9 +60,7 @@ h6{
 p{
     text-align: right;
 }
-
 *{
-    
     font-family: 'Staatliches', cursive;
 }
  #mp {
@@ -81,13 +70,10 @@ p{
     margin-right: auto;
     height: auto;
     max-width: 100px;
-    
   }
   #sidenav-1{
       background-color: bisque;
       border-style: groove  ;
 padding-top: 5%;
 border-radius: 120px; 
-
 }
-
